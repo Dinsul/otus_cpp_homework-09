@@ -3,7 +3,8 @@ compiler: clang
 dist: xenial
 before_script:
 - sudo apt update
-- sudo apt install conan -y
+- sudo apt install pip -y
+- sudo pip install conan -y
 script:
 - conan install . --build missing
 - cmake .
