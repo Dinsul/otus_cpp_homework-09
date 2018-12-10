@@ -1,5 +1,6 @@
 language: cpp
 compiler: clang
+dist: xenial
 before_script:
 - sudo apt update
 - sudo apt install conan -y
