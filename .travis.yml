@@ -3,8 +3,8 @@ compiler: clang
 dist: xenial
 before_script:
 - sudo apt update
-- sudo apt install pip -y
-- sudo pip install conan -y
+- wget https://dl.bintray.com/conan/installers/conan-ubuntu-64_1_10_0.deb
+- sudo dpkg -i conan-ubuntu-64_1_10_0.deb
 script:
 - conan install . --build missing
 - cmake .
