@@ -2,5 +2,8 @@
 range-v3/0.4.0@ericniebler/stable
 boost/1.68.0@conan/stable
 
+[options]
+boost:shared=False
+
 [generators]
 cmake
