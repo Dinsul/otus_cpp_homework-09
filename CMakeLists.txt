@@ -24,7 +24,7 @@ set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
 
 
 set_target_properties(test_${PROJECT_NAME} PROPERTIES
-    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+#    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
     INCLUDE_DIRECTORIES "${CONAN_INCLUDE_DIRS}"
     )
 
@@ -35,7 +35,7 @@ target_link_libraries(test_${PROJECT_NAME}
 if (APPLE)
     set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
 else()
-    set(CMAKE_INSTALL_RPATH "/usr/lib")
+    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
 endif()
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
