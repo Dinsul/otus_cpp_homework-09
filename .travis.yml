@@ -6,7 +6,7 @@ before_script:
 - wget https://dl.bintray.com/conan/installers/conan-ubuntu-64_1_10_0.deb
 - sudo dpkg -i conan-ubuntu-64_1_10_0.deb
 script:
-- conan install . --build missing
+- sudo conan install . --build missing
 - cmake .
 - cmake --build .
 - cmake --build . --target test
