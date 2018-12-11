@@ -3,6 +3,7 @@ compiler: clang
 dist: xenial
 before_script:
 - sudo apt update
+- pip install --upgrade enum34
 - pip install --upgrade pip
 - sudo pip install conan
 script:
