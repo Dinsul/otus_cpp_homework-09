@@ -11,10 +11,9 @@ conan_basic_setup(KEEP_RPATHS)
 
 add_executable(${PROJECT_NAME} "main.cpp" "${PROJECT_NAME}.cpp" "${PROJECT_NAME}.h")
 
-#add_executable(test_${PROJECT_NAME} "test_${PROJECT_NAME}.cpp" "${PROJECT_NAME}.cpp" "${PROJECT_NAME}.h")
+add_executable(test_${PROJECT_NAME} "test_${PROJECT_NAME}.cpp" "${PROJECT_NAME}.cpp" "${PROJECT_NAME}.h")
 
-#set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
-set_target_properties(${PROJECT_NAME} PROPERTIES
+set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
@@ -22,20 +21,20 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     )
 
 
-#set_target_properties(test_${PROJECT_NAME} PROPERTIES
+set_target_properties(test_${PROJECT_NAME} PROPERTIES
 #    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-#    INCLUDE_DIRECTORIES "${CONAN_INCLUDE_DIRS}"
-#    )
+    INCLUDE_DIRECTORIES "${CONAN_INCLUDE_DIRS}"
+    )
 
-#target_link_libraries(test_${PROJECT_NAME}
-#    ${CONAN_LIBS}
-#    )
+target_link_libraries(test_${PROJECT_NAME}
+    STATIC ${CONAN_LIBS}
+    )
 
-if (APPLE)
-    set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
-else()
-    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
-endif()
+#if (APPLE)
+#    set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
+#else()
+#    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
+#endif()
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
@@ -49,6 +48,6 @@ set(CPACK_PACKAGE_CONTACT dinsul2.0@gmail.com)
 
 include (CPack)
 
-#enable_testing()
+enable_testing()
 
-#add_test(test_split "test_${PROJECT_NAME}")
+add_test(test_split "test_${PROJECT_NAME}")
