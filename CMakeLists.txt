@@ -9,30 +9,23 @@ endif ()
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
-conan_set_find_library_paths()
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+message("\n\n${CONAN_INCLUDE_DIRS} ${Boost_INCLUDE_DIR}\n\n")
 
 add_executable(${PROJECT_NAME} "main.cpp" "${PROJECT_NAME}.cpp" "${PROJECT_NAME}.h")
 
 add_executable(test_${PROJECT_NAME} "test_${PROJECT_NAME}.cpp" "${PROJECT_NAME}.cpp" "${PROJECT_NAME}.h")
 
-
-#include_directories("include")
-
 set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
+    INCLUDE_DIRECTORIES "${CONAN_INCLUDE_DIRS}"
     )
+
 
 set_target_properties(test_${PROJECT_NAME} PROPERTIES
-    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-    INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-    )
-
-target_link_libraries(${PROJECT_NAME}
-    ${CONAN_LIBS}
+    INCLUDE_DIRECTORIES "${CONAN_INCLUDE_DIRS}"
     )
 
 target_link_libraries(test_${PROJECT_NAME}
