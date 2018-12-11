@@ -6,9 +6,8 @@ else ()
     project(range VERSION 0.0.0)
 endif ()
 
-
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+conan_basic_setup(KEEP_RPATHS)
 
 message("\n\n${CONAN_INCLUDE_DIRS} ${Boost_INCLUDE_DIR}\n\n")
 
@@ -25,12 +24,19 @@ set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
 
 
 set_target_properties(test_${PROJECT_NAME} PROPERTIES
+    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
     INCLUDE_DIRECTORIES "${CONAN_INCLUDE_DIRS}"
     )
 
 target_link_libraries(test_${PROJECT_NAME}
     ${CONAN_LIBS}
     )
+
+if (APPLE)
+    set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
+else()
+    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
+endif()
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
