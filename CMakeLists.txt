@@ -35,7 +35,7 @@ target_link_libraries(test_${PROJECT_NAME}
 if (APPLE)
     set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
 else()
-    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
+    set(CMAKE_INSTALL_RPATH "/usr/lib")
 endif()
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
