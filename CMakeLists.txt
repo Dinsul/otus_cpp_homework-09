@@ -12,9 +12,15 @@ conan_basic_setup()
 link_libraries("${CONAN_LIBS}")
 include_directories("${CONAN_INCLUDE_DIRS}")
 
-add_executable(${PROJECT_NAME} "main.cpp" "${PROJECT_NAME}.cpp" "${PROJECT_NAME}.h")
+add_executable(${PROJECT_NAME}
+    "main.cpp"
+    "${PROJECT_NAME}.cpp"
+    "${PROJECT_NAME}.h")
 
-add_executable(test_${PROJECT_NAME} "test_${PROJECT_NAME}.cpp" "${PROJECT_NAME}.cpp" "${PROJECT_NAME}.h")
+add_executable(test_${PROJECT_NAME}
+    "test_${PROJECT_NAME}.cpp"
+    "${PROJECT_NAME}.cpp"
+    "${PROJECT_NAME}.h")
 
 set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
@@ -40,4 +46,4 @@ include (CPack)
 
 enable_testing()
 
-add_test(test_split "test_${PROJECT_NAME}")
+add_test(test_split "test_range")
