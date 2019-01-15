@@ -46,4 +46,4 @@ include (CPack)
 
 enable_testing()
 
-add_test(test_split "test_range")
+add_test(test_split "bin/test_range")
