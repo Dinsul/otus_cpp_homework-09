@@ -1,7 +1,6 @@
 #define BOOST_TEST_MODULE test_range
 
 #include "range.h"
-#include <iostream>
 
 #include <boost/test/unit_test.hpp>
 
