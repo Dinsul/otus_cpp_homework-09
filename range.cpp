@@ -10,15 +10,13 @@ std::vector<std::string> split(const std::string &str, char delimiter)
 
 inline void printIp(const ip_t &ip)
 {
-//    std::string out;
+    std::string out;
 
-//    ranges::for_each(ip, [&out](auto ch){out.append(std::to_string(ch)); out.append(".");});
+    ranges::for_each(ip, [&out](auto ch){out.append(std::to_string(ch)); out.append(".");});
 
-//    out.pop_back();
+    out.pop_back();
 
-//    std::cout << out << std::endl;
-
-    std::printf("%d.%d.%d.%d\n", ip[0], ip[1], ip[2], ip[3]);
+    std::cout << out << std::endl;
 }
 
 void printIp(const ip_vector_t &ipVector)
